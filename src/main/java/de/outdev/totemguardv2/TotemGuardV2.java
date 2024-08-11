@@ -19,6 +19,11 @@ public final class TotemGuardV2 extends JavaPlugin {
         return instance;
     }
 
+    @Nullable
+    public static FileConfiguration getConfiguration() {
+        return config;
+    }
+
     @Override
     public void onEnable() {
         getLogger().info("Loading TotemGuard...");
