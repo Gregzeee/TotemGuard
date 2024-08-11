@@ -15,18 +15,11 @@ import java.util.HashMap;
 
 public class TotemUseListener implements Listener {
 
-    private final TotemGuardV2 plugin;
-    private final HashMap<Player, Integer> totemUsage;
-    private final HashMap<Player, Integer> flagCounts;
+    private final TotemGuardV2 plugin = TotemGuardV2.getInstance();
+    private final HashMap<Player, Integer> totemUsage = new HashMap<>();
+    private final HashMap<Player, Integer> flagCounts = new HashMap<>();
 
-    public TotemUseListener(TotemGuardV2 plugin) {
-        this.plugin = plugin;
-        this.totemUsage = new HashMap<>();
-        this.flagCounts = new HashMap<>();
-
-
-        Bukkit.getPluginManager().registerEvents(this, plugin); // registering the events
-
+    public TotemUseListener() {
         // Schedule the reset task
         long resetInterval = plugin.getConfig().getInt("remove_flags_min") * 60L * 20L; // Convert minutes to ticks (20 ticks = 1 second)
         Bukkit.getScheduler().runTaskTimer(plugin, this::resetAllFlagCounts, resetInterval, resetInterval);

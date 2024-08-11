@@ -19,12 +19,6 @@ public class TotemGuardCommand implements CommandExecutor, TabCompleter {
     private TotemGuardV2 plugin = TotemGuardV2.getInstance();
     private static final Map<UUID, Boolean> alertToggle = new HashMap<>();
 
-    public TotemGuardCommand(TotemGuardV2 plugin) {
-        this.plugin = plugin;
-        this.plugin.getCommand("totemguard").setExecutor(this);
-        this.plugin.getCommand("totemguard").setTabCompleter(this);
-    }
-
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
         if (args.length == 0) {
