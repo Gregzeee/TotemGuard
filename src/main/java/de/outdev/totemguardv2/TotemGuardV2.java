@@ -19,16 +19,9 @@ public final class TotemGuardV2 extends JavaPlugin {
         return instance;
     }
 
-    @Nullable
-    public static FileConfiguration getConfiguration() {
-        return config;
-    }
-
     @Override
     public void onEnable() {
         getLogger().info("Loading TotemGuard...");
-
-        long start = System.currentTimeMillis();
 
         getCommand("totemguard").setExecutor(new TotemGuardCommand());
         getCommand("check").setExecutor(new CheckCommand());
@@ -38,7 +31,7 @@ public final class TotemGuardV2 extends JavaPlugin {
 
         saveDefaultConfig();
 
-        totemUseListener = new TotemUseListener(this);
+        getServer().getPluginManager().registerEvents(totemUseListener = new TotemUseListener(), this);
 
         getLogger().info(" \n"+
                 "  _____    _             ___                  _ \n" +
@@ -46,13 +39,10 @@ public final class TotemGuardV2 extends JavaPlugin {
                 "   | |/ _ \\  _/ -_) '  \\ (_ | || / _` | '_/ _` |\n" +
                 "   |_|\\___/\\__\\___|_|_|_\\___|\\_,_\\__,_|_| \\__,_|\n" +
                 "                                                ");
-        long finish = System.currentTimeMillis() - start;
-        getLogger().info("Successfully loaded TotemGuard in " + finish + "ms!");
     }
 
     @Override
     public void onDisable() {
-        getLogger().info("Disabling plugin 'TotemGuard'...");
         saveDefaultConfig();
     }
 
