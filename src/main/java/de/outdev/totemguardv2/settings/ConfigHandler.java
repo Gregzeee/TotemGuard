@@ -68,7 +68,7 @@ public final class ConfigHandler {
 	public void load() {
 		TotemGuardV2 instance = TotemGuardV2.getInstance();
 
-		String path = "config/config.yml";
+		String path = "config.yml";
 		File file = new File(instance.getDataFolder(), path);
 
 		if (!file.exists()) {
