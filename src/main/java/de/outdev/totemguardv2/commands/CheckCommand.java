@@ -20,13 +20,7 @@ import java.util.List;
 
 public class CheckCommand implements CommandExecutor, TabCompleter {
 
-    private final TotemGuardV2 plugin;
-
-    public CheckCommand(TotemGuardV2 plugin) {
-        this.plugin = plugin;
-        this.plugin.getCommand("check").setExecutor(this);
-        this.plugin.getCommand("check").setTabCompleter(this);
-    }
+    TotemGuardV2 plugin = TotemGuardV2.getInstance();
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {

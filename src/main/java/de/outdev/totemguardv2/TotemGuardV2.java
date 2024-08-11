@@ -30,8 +30,8 @@ public final class TotemGuardV2 extends JavaPlugin {
 
         long start = System.currentTimeMillis();
 
-        new TotemGuardCommand(this);
-        new CheckCommand(this);
+        getCommand("totemguard").setExecutor(new TotemGuardCommand());
+        getCommand("check").setExecutor(new CheckCommand());
 
         instance = this;
         config = getConfig();
